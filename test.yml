@@ -3,26 +3,27 @@
   hosts: all
  
   tasks:
+  
   - name: Log into private registry and force re-authorization
-  docker_login:
-    registry: 192.168.218.130:80
-    username: admin
-    password: Harbor12345
-    reauthorize: yes
+    docker_login:
+      registry: 192.168.218.130:80
+      username: admin
+      password: Harbor12345
+      reauthorize: yes
 
-- name: Remove image
-  docker_image:
-    state: absent
-    name: 192.168.218.130:80/portalapp/portalappimage
-    tag: latest
+  - name: Remove image
+    docker_image:
+      state: absent
+      name: 192.168.218.130:80/portalapp/portalappimage
+      tag: latest
 
-- name: pull image
-  docker_image:
-    name: 192.168.218.130:80/portalapp/portalappimage:latest
-    source: pull
+  - name: pull image
+    docker_image:
+      name: 192.168.218.130:80/portalapp/portalappimage:latest
+      source: pull
 
-- name: Run `docker-compose up` again
-      docker_compose:
-        project_src: /home/kalyan
-        build: no
+  - name: Run `docker-compose up` again
+    docker_compose:
+      project_src: /home/kalyan
+      build: no
       register: output
