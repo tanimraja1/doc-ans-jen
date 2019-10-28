@@ -21,12 +21,12 @@
     docker_image:
       force_absent: yes
       state: absent
-      name: "{{ ip }}":80/"{{ service }}"/"{{ serviceimage }}":"{{ tag }}"
+      name: "{{ ip }}:80/{{ service }}/{{ serviceimage }}:{{ tag }}"
       tag: latest
 
   - name: pull image
     docker_image:
-      name: "{{ ip }}":80/"{{ service }}"/"{{ serviceimage }}":"{{ tag }}"
+      name: "{{ ip }}:80/{{ service }}/{{ serviceimage }}:{{ tag }}"
       source: pull
 
   - name: Run `docker-compose up` again
