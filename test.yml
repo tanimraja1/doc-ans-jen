@@ -7,8 +7,8 @@
   - name: Log into private registry and force re-authorization
     docker_login:
       registry: "{{ ip }}:80"
-      username: admin
-      password: Harbor12345
+      username: "{{ username }}"
+      password: "{{ password }}"
       reauthorize: yes
       
   - name: remove container
