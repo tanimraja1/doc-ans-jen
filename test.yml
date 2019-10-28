@@ -10,6 +10,12 @@
       username: admin
       password: Harbor12345
       reauthorize: yes
+      
+  - name: remove container
+    docker_container:
+      name: tomcat3
+      force_kill: yes
+      state: absent
 
   - name: Remove image
     docker_image:
