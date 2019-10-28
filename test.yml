@@ -6,7 +6,7 @@
   
   - name: Log into private registry and force re-authorization
     docker_login:
-      registry: "{{ ip }}":80
+      registry: "{{ ip }}:80"
       username: admin
       password: Harbor12345
       reauthorize: yes
