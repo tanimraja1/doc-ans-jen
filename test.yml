@@ -8,7 +8,7 @@
     docker_login:
       registry: "{{ ip }}:80"
       username: admin
-      password: Harbor12345
+      password: "{{ pass }}"
       reauthorize: yes
       
   - name: remove container
