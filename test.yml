@@ -6,7 +6,7 @@
   
   - name: Log into private registry and force re-authorization
     docker_login:
-      registry: 192.168.218.130:80
+      registry: {{ ip }}:80
       username: admin
       password: Harbor12345
       reauthorize: yes
@@ -21,12 +21,12 @@
     docker_image:
       force_absent: yes
       state: absent
-      name: 192.168.218.130:80/portalapp/portalappimage
+      name: {{ ip }}:80/{{ service }}/{{ serviceimage }}:{{ tag }}
       tag: latest
 
   - name: pull image
     docker_image:
-      name: 192.168.218.130:80/portalapp/portalappimage:latest
+      name: {{ ip }}:80/{{ service }}/{{ serviceimage }}:{{ tag }}
       source: pull
 
   - name: Run `docker-compose up` again
